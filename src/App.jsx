@@ -1,44 +1,35 @@
-import styled, { ThemeProvider } from "styled-components";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { lightTheme } from "./utils/Themes";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import { useState } from "react";
-import Authentication from "./pages/Authentication";
-import Favourites from "./pages/Favourites";
-import Cart from "./pages/Cart";
-import FoodDetails from "./pages/FoodDetails";
-import FoodListing from "./pages/FoodListing";
-import { useSelector } from "react-redux";
+import './App.css';
+import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css'  //npm i bootstrap-dark-5 boostrap
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 
-const Container = styled.div``;
+import Home from './screens/Home';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+// import Navbar from './components/Navbar';
+import Login from './screens/Login';
+import Signup from './screens/Signup';
+import { CartProvider } from './components/ContextReducer';
+import MyOrder from './screens/MyOders.jsx';
+
 
 function App() {
-  const { currentUser } = useSelector((state) => state.user);
-  const { open, message, severity } = useSelector((state) => state.snackbar);
-  const [openAuth, setOpenAuth] = useState(false);
   return (
-    <ThemeProvider theme={lightTheme}>
-      <BrowserRouter>
-        <Container>
-          <Navbar
-            setOpenAuth={setOpenAuth}
-            openAuth={openAuth}
-            currentUser={currentUser}
-          />
+    <CartProvider>
+      <Router>
+        <div>
           <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/favorite" exact element={<Favourites />} />
-            <Route path="/cart" exact element={<Cart />} />
-            <Route path="/dishes/:id" exact element={<FoodDetails />} />
-            <Route path="/dishes" exact element={<FoodListing />} />
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<Signup />} />
+            <Route exact path="/myorders" element={<MyOrder />} />
           </Routes>
-          {openAuth && (
-            <Authentication setOpenAuth={setOpenAuth} openAuth={openAuth} />
-          )}
-        </Container>
-      </BrowserRouter>
-    </ThemeProvider>
+        </div>
+      </Router>
+    </CartProvider>
   );
 }
 

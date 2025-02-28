@@ -9,6 +9,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.nav-link{
+  color: white !important;
+}
+#carousel{
+  max-height: 500px;
+}
+.carousalImg{
+  object-fit: contain !important;
+}
 
 /* width */
 ::-webkit-scrollbar {

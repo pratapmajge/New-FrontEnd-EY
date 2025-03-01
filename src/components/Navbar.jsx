@@ -26,8 +26,8 @@ export default function Navbar() {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-success position-sticky"
-                style={{ boxShadow: "0px 10px 20px black", position: "fixed", zIndex: "10", width: "100%" }}>
+            <nav className="navbar navbar-expand-lg navbar-dark  position-sticky"
+                style={{ boxShadow: "0px 10px 20px black", backgroundColor:"#217b7e" ,position: "fixed", zIndex: "10", width: "100%" }}>
                 <div className="container-fluid">
                     <Link className="navbar-brand fs-1 fst-italic" to="/">GoFood</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
